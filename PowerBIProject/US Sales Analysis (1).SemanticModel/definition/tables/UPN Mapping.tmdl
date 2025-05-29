@@ -1,0 +1,32 @@
+table 'UPN Mapping'
+	lineageTag: eb0f5688-3bd0-4c5b-aba9-8a8c552efab7
+
+	column Username
+		dataType: string
+		lineageTag: d317ed3d-d552-4bce-9730-0dd784a66b1d
+		summarizeBy: none
+		sourceColumn: Username
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Color'
+		dataType: string
+		lineageTag: d5a14f21-6e93-43a7-957a-b2a01500990f
+		summarizeBy: none
+		sourceColumn: Product Color
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'UPN Mapping' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WSkzJzcxz8M1Ld80r83V2DDCwMDA0NtXLz8vNTC7KL85PK9FLzs9V0lFyyklMzlaKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Username = _t, #"Product Color" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Username", type text}, {"Product Color", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

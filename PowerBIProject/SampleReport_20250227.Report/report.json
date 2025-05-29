@@ -1,0 +1,69 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.61\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"relationships\":[{\"source\":\"0b3627d7649306840a2c\",\"target\":\"56550dfbcee322d9390a\",\"type\":3},{\"source\":\"56550dfbcee322d9390a\",\"target\":\"0b3627d7649306840a2c\",\"type\":3}]}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "392fe1d7d6e25bfb9398",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0b3627d7649306840a2c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":46,\"y\":398.5,\"width\":1059,\"height\":231,\"z\":2000,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(Weather.AvgTemperatureFahrenheit)\"},{\"queryRef\":\"Sum(Weather.PrecipitationInches)\"}],\"Columns\":[{\"queryRef\":\"Date.Year\",\"active\":true},{\"queryRef\":\"Date.MonthName\"}],\"Rows\":[{\"queryRef\":\"Weather.GeographyID\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"w\",\"Entity\":\"Weather\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"AvgTemperatureFahrenheit\"}},\"Function\":0},\"Name\":\"Sum(Weather.AvgTemperatureFahrenheit)\",\"NativeReferenceName\":\"Sum of AvgTemperatureFahrenheit\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"PrecipitationInches\"}},\"Function\":0},\"Name\":\"Sum(Weather.PrecipitationInches)\",\"NativeReferenceName\":\"Sum of PrecipitationInches\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MonthName\"},\"Name\":\"Date.MonthName\",\"NativeReferenceName\":\"MonthName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"GeographyID\"},\"Name\":\"Weather.GeographyID\",\"NativeReferenceName\":\"Count of GeographyID\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 231.00,
+          "width": 1059.00,
+          "x": 46.00,
+          "y": 398.50,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"305b04bd4033523c372c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.72644376899696,\"y\":0,\"z\":0,\"width\":280.1215805471125,\"height\":169.2401215805471,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Date\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"Date.Date\",\"NativeReferenceName\":\"Date\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"startDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2000-01-01T00:00:00'\"}}},\"endDate\":{\"expr\":{\"Literal\":{\"Value\":\"datetime'2015-12-31T00:00:00'\"}}},\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2000-01-01T00:00:00'\"}}}},\"Right\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Right\":{\"Literal\":{\"Value\":\"datetime'2016-01-01T00:00:00'\"}}}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 169.24,
+          "width": 280.12,
+          "x": 9.73,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"45a4c51b3ad81800418a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":553.5516789629731,\"y\":19.769702820106186,\"z\":2001,\"width\":227.35158243122115,\"height\":149.68489278080398,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(Date.Date)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Function\":5},\"Name\":\"Min(Date.Date)\",\"NativeReferenceName\":\"Count of Date\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 149.68,
+          "width": 227.35,
+          "x": 553.55,
+          "y": 19.77,
+          "z": 2001.00
+        },
+        {
+          "config": "{\"name\":\"56550dfbcee322d9390a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":45.714285714285715,\"y\":142.97872340425533,\"z\":1000,\"width\":1059.2097264437691,\"height\":231.48936170212767,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"CountNonNull(Trip.HackneyLicenseID)\"},{\"queryRef\":\"CountNonNull(Trip.MedallionID)\"},{\"queryRef\":\"Sum(Trip.PassengerCount)\"},{\"queryRef\":\"Sum(Trip.PickupLatitude)\"},{\"queryRef\":\"CountNonNull(Trip.PickupGeographyID)\"}],\"Columns\":[{\"queryRef\":\"Date.Year\",\"active\":true},{\"queryRef\":\"Date.MonthName\",\"active\":true}],\"Rows\":[{\"queryRef\":\"Trip.PaymentType\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"HackneyLicenseID\"}},\"Function\":5},\"Name\":\"CountNonNull(Trip.HackneyLicenseID)\",\"NativeReferenceName\":\"Count of HackneyLicenseID\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"MedallionID\"}},\"Function\":5},\"Name\":\"CountNonNull(Trip.MedallionID)\",\"NativeReferenceName\":\"Count of MedallionID\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"PassengerCount\"}},\"Function\":0},\"Name\":\"Sum(Trip.PassengerCount)\",\"NativeReferenceName\":\"Sum of PassengerCount\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"PickupLatitude\"}},\"Function\":0},\"Name\":\"Sum(Trip.PickupLatitude)\",\"NativeReferenceName\":\"Sum of PickupLatitude\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"PickupGeographyID\"}},\"Function\":5},\"Name\":\"CountNonNull(Trip.PickupGeographyID)\",\"NativeReferenceName\":\"Count of PickupGeographyID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Date.Year\",\"NativeReferenceName\":\"Year\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"MonthName\"},\"Name\":\"Date.MonthName\",\"NativeReferenceName\":\"MonthName\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"PaymentType\"},\"Name\":\"Trip.PaymentType\",\"NativeReferenceName\":\"PaymentType\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"HackneyLicenseID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"381e9d38544aaf2ccb39\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Date\"}},\"Property\":\"Year\"}},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 231.49,
+          "width": 1059.21,
+          "x": 45.71,
+          "y": 142.98,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

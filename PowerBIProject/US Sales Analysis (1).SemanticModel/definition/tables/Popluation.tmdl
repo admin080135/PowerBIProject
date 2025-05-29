@@ -1,0 +1,32 @@
+table Popluation
+	lineageTag: a84a342d-06e2-432b-ae73-434575b77df7
+
+	column State
+		dataType: string
+		lineageTag: d6217358-0aa8-40ba-92f0-56e45560c952
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column Population
+		dataType: int64
+		formatString: 0
+		lineageTag: b7ce7d8b-ab9f-43d9-a7e0-c5efa1ec01ee
+		summarizeBy: sum
+		sourceColumn: Population
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Popluation-7335f0d3-f12f-4b76-ba0c-848588bb0972 = m
+		mode: import
+		source =
+				let
+				    Source = Web.BrowserContents("https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population"),
+				    #"Extracted Table From Html" = Html.Table(Source, {{"State", "TABLE.wikitable.sortable.jquery-tablesorter:nth-child(16) > TBODY > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(16) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(15) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(14)"}, {"Population", "TABLE.wikitable.sortable.jquery-tablesorter:nth-child(16) > TBODY > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(16) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(15) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(14) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(13)"}}, [RowSelector="TABLE.wikitable.sortable.jquery-tablesorter:nth-child(16) > TBODY > TR"]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Extracted Table From Html",{{"State", type text}, {"Population", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

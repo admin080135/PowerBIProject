@@ -1,0 +1,9 @@
+role 'Product - BL'
+	modelPermission: read
+
+	tablePermission 'UPN Mapping' = [Username] == USERPRINCIPALNAME()
+
+	tablePermission Product
+
+	annotation PBI_Id = d97a2602969d4b849c7918293aca0da6
+

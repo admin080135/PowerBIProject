@@ -1,0 +1,20 @@
+model Model
+	culture: en-SG
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-SG
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.140.829.0 (25.02)+64e0b2e37258cf248e8119ae244f4e8e75927166
+
+annotation PBI_QueryOrder = ["Date","Trip","Weather"]
+
+ref table Date
+ref table Trip
+ref table Weather
+
+ref cultureInfo en-SG
+

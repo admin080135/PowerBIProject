@@ -1,0 +1,39 @@
+table Users
+	lineageTag: bb3ad650-a0e5-4d7e-a1cb-b4d7939535f3
+
+	column UserID
+		formatString: 0
+		lineageTag: 421a9fb4-105c-4715-8082-b20fdfa1ead2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UserID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserPrincipalName
+		lineageTag: 3f0d97b0-233a-471c-9ee8-bd4c49fa12c7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UserPrincipalName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Users = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE (
+				    "UserID", INTEGER,
+				    "UserPrincipalName", STRING,
+				    {
+				        {1, "user1@domain.com"},
+				        {2, "user2@domain.com"},
+				        {3, "user3@domain.com"},
+				        {4, "user4@domain.com"}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = 61861ef518f3460a84225897e389b28a
+

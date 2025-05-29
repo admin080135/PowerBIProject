@@ -1,0 +1,4 @@
+relationship 2088feac-70ec-7024-76df-0f1993a305ac
+	fromColumn: FactTable.UserID
+	toColumn: Users.UserID
+

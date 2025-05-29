@@ -1,0 +1,49 @@
+table 'Measure Params'
+	lineageTag: 4dcb0160-8d68-4586-8e59-9891afd84fed
+
+	column Measures
+		lineageTag: 7030ce52-1d38-4ca7-ac4e-aaeb7df3a61b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Measures Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Measures Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measures Fields'
+		isHidden
+		lineageTag: 3d88643e-091c-466a-abcb-1fbc41b54380
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Measures Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measures Order'
+		isHidden
+		formatString: 0
+		lineageTag: 02809a8f-63da-437b-be94-7282132ecca4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Params-77b2f850-a33e-4e9f-b393-fa47650572d5' = calculated
+		mode: import
+		source =
+				{
+				    ("Profit", NAMEOF('Sales'[Profit]), 0),
+				    ("Profitability", NAMEOF('Sales'[Profitability]), 1),
+				    ("TotalSales", NAMEOF('Sales'[TotalSales]), 2)
+				}
+
+	annotation PBI_Id = c320b80269794e32b257bb47928f4a95
+

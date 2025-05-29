@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "194535a1535d00370244",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"aeedb43490529201d54e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":411.42857142857144,\"y\":87.53799392097265,\"z\":1,\"width\":410.4559270516717,\"height\":265.53191489361706,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"FactTable.UserID\"},{\"queryRef\":\"CountNonNull(FactTable.FactID)\"},{\"queryRef\":\"Sum(FactTable.Value)\"},{\"queryRef\":\"Users.UserPrincipalName\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"FactTable\",\"Type\":0},{\"Name\":\"u\",\"Entity\":\"Users\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"UserID\"},\"Name\":\"FactTable.UserID\",\"NativeReferenceName\":\"UserID\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"FactID\"}},\"Function\":5},\"Name\":\"CountNonNull(FactTable.FactID)\",\"NativeReferenceName\":\"Count of FactID\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Value\"}},\"Function\":0},\"Name\":\"Sum(FactTable.Value)\",\"NativeReferenceName\":\"Sum of Value\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"u\"}},\"Property\":\"UserPrincipalName\"},\"Name\":\"Users.UserPrincipalName\",\"NativeReferenceName\":\"UserPrincipalName\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"FactID\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 265.53,
+          "width": 410.46,
+          "x": 411.43,
+          "y": 87.54,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

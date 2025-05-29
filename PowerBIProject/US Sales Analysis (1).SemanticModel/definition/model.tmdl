@@ -1,0 +1,28 @@
+model Model
+	defaultMode: directQuery
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.141.528.0 (25.03)+364bcf2c2b5bb0f5ca49d6d6922a547463bcdfd8
+
+annotation PBI_QueryOrder = ["Date","Product","Reseller","Sales","Popluation","UPN Mapping"]
+
+ref table Date
+ref table Product
+ref table Reseller
+ref table Sales
+ref table Popluation
+ref table Dimensions
+ref table 'Measure Params'
+ref table 'UPN Mapping'
+
+ref role 'Product - BL'
+
+ref cultureInfo en-US
+

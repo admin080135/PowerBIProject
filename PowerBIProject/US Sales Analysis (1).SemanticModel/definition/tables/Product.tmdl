@@ -1,0 +1,87 @@
+table Product
+	lineageTag: 22f6b937-3cd7-40a3-ab36-833f8e57ef8c
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cc54d5d4-5779-41f3-ad3d-db4f9b041688
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(50)
+		lineageTag: 9741ad87-998e-45cc-bead-55ae27a155ac
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(15)
+		lineageTag: 8335b084-eace-44b4-abfd-2fd8bed80c21
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: af899432-84f5-4fcb-9dad-54d3310dd9b3
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: 329d8523-89e6-47e2-99c2-8cd1150f332f
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy Products
+		lineageTag: 7f5eec72-5359-4674-958f-0ba1ab2be5ee
+
+		level Category
+			lineageTag: b628e360-e468-423a-ab66-7863ff4ba352
+			column: Category
+
+		level Subcategory
+			lineageTag: ba842a23-e0ef-4a5f-9fdf-f62152e6da86
+			column: Subcategory
+
+		level Product
+			lineageTag: ed4f1f9b-70f9-414f-bea6-a8b027b115a0
+			column: Product
+
+	partition Product-7aa394ba-983f-40b3-9cc1-5ba6f670a212 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("rajukumawinx"),
+				    AdventureWorksDW2016RS = Source{[Name="AdventureWorksDW2016"]}[Data],
+				    dbo_DimProduct = AdventureWorksDW2016RS{[Schema="dbo",Item="DimProduct"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_DimProduct, each ([FinishedGoodsFlag] = true)),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"ProductKey", "EnglishProductName", "Color", "DimProductSubcategory"}),
+				    #"Expanded DimProductSubcategory" = Table.ExpandRecordColumn(#"Removed Other Columns", "DimProductSubcategory", {"EnglishProductSubcategoryName", "DimProductCategory"}, {"EnglishProductSubcategoryName", "DimProductCategory"}),
+				    #"Expanded DimProductCategory" = Table.ExpandRecordColumn(#"Expanded DimProductSubcategory", "DimProductCategory", {"EnglishProductCategoryName"}, {"EnglishProductCategoryName"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded DimProductCategory",{{"EnglishProductName", "Product"}, {"EnglishProductSubcategoryName", "Subcategory"}, {"EnglishProductCategoryName", "Category"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

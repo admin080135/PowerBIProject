@@ -1,0 +1,14 @@
+model Model
+	culture: en-SG
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.141.1177.0 (25.03)+c500dc5720dc9271c2dcfef1230911a0da742ee3
+
+ref table Users
+ref table FactTable
+
+ref role HR
+
+ref cultureInfo en-SG
+

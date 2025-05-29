@@ -1,0 +1,19 @@
+relationship 4be60cab-3f11-4b0d-bae6-206c6312cb32
+	relyOnReferentialIntegrity
+	fromColumn: Sales.OrderDateKey
+	toColumn: Date.DateKey
+
+relationship 6f0784eb-c6df-4e3a-8a77-42ab604e3ca3
+	relyOnReferentialIntegrity
+	fromColumn: Sales.ProductKey
+	toColumn: Product.ProductKey
+
+relationship 82f72cfb-8d0c-4d91-9a68-bbc05cd3770f
+	relyOnReferentialIntegrity
+	fromColumn: Sales.ResellerKey
+	toColumn: Reseller.ResellerKey
+
+relationship 7c5fb602-a489-07d7-8c85-5ad2cbff94d2
+	fromColumn: Product.Color
+	toColumn: 'UPN Mapping'.'Product Color'
+

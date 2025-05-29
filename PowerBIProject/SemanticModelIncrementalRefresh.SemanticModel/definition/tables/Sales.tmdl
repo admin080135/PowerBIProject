@@ -1,0 +1,120 @@
+table Sales
+	lineageTag: 2cdae188-d330-4120-b27d-1cd8af3ddd2e
+
+	refreshPolicy
+		policyType: basic
+		rollingWindowGranularity: year
+		rollingWindowPeriods: 20
+		incrementalGranularity: year
+		incrementalPeriods: 1
+		sourceExpression =
+			let
+			    Source = Sql.Databases("DESKTOP-1LIQC0R\MSSQLSERVER02"),
+			    #"TailspinToys-US" = Source{[Name="TailspinToys-US"]}[Data],
+			    dbo_Sales = #"TailspinToys-US"{[Schema="dbo",Item="Sales"]}[Data],
+			    #"Changed Type" = Table.TransformColumnTypes(dbo_Sales,{{"OrderDate", type datetime}}),
+			    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [OrderDate] > RangeStart and [OrderDate] <= RangeEnd)
+			in
+			    #"Filtered Rows"
+
+	column OrderNumber
+		dataType: string
+		lineageTag: 6279d4f8-d115-4512-8f93-e20357eb6333
+		summarizeBy: none
+		sourceColumn: OrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5b2f81ef-da15-400f-87e3-512004b04747
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShipDate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fd54bf81-9113-4050-b340-cc62e87d5f92
+		summarizeBy: none
+		sourceColumn: ShipDate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CustomerStateID
+		dataType: int64
+		formatString: 0
+		lineageTag: 97d82fac-d947-4611-ac86-ce8e4d6a093f
+		summarizeBy: count
+		sourceColumn: CustomerStateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: int64
+		formatString: 0
+		lineageTag: d65ec831-19ee-4057-b08d-d33e31451566
+		summarizeBy: count
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: bed2eac8-77e3-46f2-b16d-b68c277e6254
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: acc932fb-a0e3-48fc-a99f-908fc5629b73
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DiscountAmount
+		dataType: double
+		lineageTag: b73b85d7-3a6e-4e62-9090-18bc2797511f
+		summarizeBy: sum
+		sourceColumn: DiscountAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PromotionCode
+		dataType: string
+		lineageTag: 85a2c1da-56e9-4e16-bdb4-e2e26a58840b
+		summarizeBy: none
+		sourceColumn: PromotionCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("DESKTOP-1LIQC0R\MSSQLSERVER02"),
+				    #"TailspinToys-US" = Source{[Name="TailspinToys-US"]}[Data],
+				    dbo_Sales = #"TailspinToys-US"{[Schema="dbo",Item="Sales"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dbo_Sales,{{"OrderDate", type datetime}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [OrderDate] > RangeStart and [OrderDate] <= RangeEnd)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_IsMQueryFoldable = True
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

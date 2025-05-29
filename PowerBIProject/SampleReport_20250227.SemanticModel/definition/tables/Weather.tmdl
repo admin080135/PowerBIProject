@@ -1,0 +1,60 @@
+table Weather
+	lineageTag: b7a2c913-29a7-416f-9979-ef4a8c0f2934
+
+	column DateID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 845ca5d8-b37f-432a-bd30-e0c6ee61e98b
+		summarizeBy: none
+		sourceColumn: DateID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyID
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 96f2a112-a588-4612-8042-5650070a9bb1
+		summarizeBy: count
+		sourceColumn: GeographyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrecipitationInches
+		dataType: double
+		isNullable: false
+		sourceProviderType: float
+		lineageTag: 1020b3f5-b304-4fa5-968d-b384c9af0a1f
+		summarizeBy: sum
+		sourceColumn: PrecipitationInches
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AvgTemperatureFahrenheit
+		dataType: double
+		isNullable: false
+		sourceProviderType: float
+		lineageTag: c4a9e435-8530-4367-b147-5805574a32a9
+		summarizeBy: sum
+		sourceColumn: AvgTemperatureFahrenheit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Weather = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("ocqghng6ghienkxphulhyp7abi-2v4hx5ly2hdeth6fze4imv2424.datawarehouse.fabric.microsoft.com", "SampleWarehouse"),
+				    dbo_Weather = Source{[Schema="dbo",Item="Weather"]}[Data]
+				in
+				    dbo_Weather
+
+	annotation PBI_ResultType = Table
+

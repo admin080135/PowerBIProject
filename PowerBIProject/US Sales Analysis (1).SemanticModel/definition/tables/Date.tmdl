@@ -1,0 +1,92 @@
+table Date
+	lineageTag: ca951c00-3b61-4f97-a869-62771b9c092b
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5a70f1f9-5db3-47c7-aec2-6a13be7d3b79
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		isNullable: false
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 2ccbf28e-1c94-4619-9c28-df1afc52810d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(10)
+		lineageTag: e53bc510-b353-4c96-bb73-4a2d8092d85e
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 7a6086fc-5b45-418c-91dc-493177919ced
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumberOfYear
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: tinyint
+		lineageTag: da3625cc-7585-42cc-9b05-a56b0885a61b
+		summarizeBy: none
+		sourceColumn: MonthNumberOfYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy Calendar
+		lineageTag: 4f69fd97-3f72-4a1a-be91-bd6ea1e8e8c6
+
+		level Year
+			lineageTag: bdb9d863-b4b6-4953-bbad-f1879d0dacc0
+			column: Year
+
+		level Month
+			lineageTag: f272eafb-477c-45a4-a181-415b94307829
+			column: Month
+
+	partition Date-1de0789b-bd06-49e1-9b83-574fff6e9438 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("rajukumawinx"),
+				    AdventureWorksDW2016RS = Source{[Name="AdventureWorksDW2016"]}[Data],
+				    dbo_DimDate = AdventureWorksDW2016RS{[Schema="dbo",Item="DimDate"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimDate,{"DateKey", "FullDateAlternateKey", "EnglishMonthName", "MonthNumberOfYear", "FiscalYear"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns",{{"FiscalYear", type text}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Changed Type", {{"FiscalYear", each "FY" & _, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Prefix",{{"FullDateAlternateKey", "Date"}, {"EnglishMonthName", "Month"}, {"FiscalYear", "Year"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

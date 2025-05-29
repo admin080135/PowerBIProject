@@ -1,0 +1,49 @@
+table Dimensions
+	lineageTag: d7b8222f-20f8-4040-9ede-8199362931cf
+
+	column Dimensions
+		lineageTag: 4c8c898a-797e-47fa-8354-9e299ab507e1
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Dimensions Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Dimensions Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dimensions Fields'
+		isHidden
+		lineageTag: 83314f53-4d03-402d-a4dd-db257384a9c5
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Dimensions Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dimensions Order'
+		isHidden
+		formatString: 0
+		lineageTag: f1131371-f504-4ea0-81f7-4f8e2e4405b7
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dimensions-1fdd8412-b246-4c3b-b426-f5ac0a66623b = calculated
+		mode: import
+		source =
+				{
+				    ("Business Type", NAMEOF('Reseller'[Business Type]), 0),
+				    ("Color", NAMEOF('Product'[Color]), 1),
+				    ("Product", NAMEOF('Product'[Product]), 2)
+				}
+
+	annotation PBI_Id = 0ebc20d51b9c42abbeba437faba596fa
+

@@ -1,0 +1,69 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.60\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useStylableVisualContainerHeader\":true,\"allowChangeFilterTypes\":true,\"useEnhancedTooltips\":true,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "2e0b572ad1a35302fce5",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"346145ade9d2d79a8c9c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":187.35195530726256,\"y\":12.871508379888269,\"z\":1000,\"width\":151.5977653631285,\"height\":677.8994413407821,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Trip.MedallionID\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"MedallionID\"},\"Name\":\"Trip.MedallionID\",\"NativeReferenceName\":\"Count of MedallionID\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"MedallionID\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"4L\"}}]]}}}]}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 677.90,
+          "width": 151.60,
+          "x": 187.35,
+          "y": 12.87,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"5c8a0f909159ed746168\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.731843575418994,\"y\":12.871508379888269,\"z\":0,\"width\":151.5977653631285,\"height\":677.8994413407821,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Trip.DateID\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"},\"Name\":\"Trip.DateID\",\"NativeReferenceName\":\"Count of DateID\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"20130101L\"}}],[{\"Literal\":{\"Value\":\"20130103L\"}}],[{\"Literal\":{\"Value\":\"20130107L\"}}]]}}}]}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 677.90,
+          "width": 151.60,
+          "x": 15.73,
+          "y": 12.87,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"abe8f0f7030da1313df2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":370.8748824082785,\"y\":150.51740357478835,\"z\":3000,\"width\":894.6754468485419,\"height\":552.6999059266228,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"rdlVisual\",\"projections\":{\"parameterValues\":[{\"queryRef\":\"CountNonNull(Trip.DateID)\"},{\"queryRef\":\"CountNonNull(Trip.MedallionID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"},\"Name\":\"CountNonNull(Trip.DateID)\",\"NativeReferenceName\":\"DateID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"MedallionID\"},\"Name\":\"CountNonNull(Trip.MedallionID)\",\"NativeReferenceName\":\"MedallionID\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"reportInfo\":[{\"properties\":{\"reportId\":{\"expr\":{\"Literal\":{\"Value\":\"'f1184980-e818-4ff0-af41-829fe006b957'\"}}},\"workspaceId\":{\"expr\":{\"Literal\":{\"Value\":\"'f57b78d5-d178-49c6-9fc5-c93886575cd7'\"}}}}}],\"parameterMapping\":[{\"properties\":{\"mappings\":{\"expr\":{\"Literal\":{\"Value\":\"'[{\\\"paramName\\\":\\\"Param_Trip_DateID\\\",\\\"fieldName\\\":\\\"CountNonNull(Trip.DateID)\\\",\\\"fieldDisplayName\\\":\\\"DateID\\\",\\\"isMultiValue\\\":true},{\\\"paramName\\\":\\\"Param_Trip_MedallionID\\\",\\\"fieldName\\\":\\\"CountNonNull(Trip.MedallionID)\\\",\\\"fieldDisplayName\\\":\\\"MedallionID\\\",\\\"isMultiValue\\\":true}]'\"}}}}}],\"toolbar\":[{\"properties\":{\"paramButton\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"export\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 552.70,
+          "width": 894.68,
+          "x": 370.87,
+          "y": 150.52,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"b9e1e3dfeb5d813fd0f1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":370.41340782122904,\"y\":12.871508379888269,\"z\":2000,\"width\":233.11731843575419,\"height\":114.41340782122904,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"CountNonNull(Trip.DateID)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"Trip\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"}},\"Function\":5},\"Name\":\"CountNonNull(Trip.DateID)\",\"NativeReferenceName\":\"Row Count\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"DateID\"}},\"Function\":5}}}]},\"columnProperties\":{\"CountNonNull(Trip.DateID)\":{\"displayName\":\"Row Count\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 114.41,
+          "width": 233.12,
+          "x": 370.41,
+          "y": 12.87,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

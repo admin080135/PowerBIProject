@@ -1,0 +1,20 @@
+model Model
+	culture: en-SG
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-SG
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.142.405.0 (25.04)+2fd31855fc630f02df7c7a523075f0c6ac096033
+
+annotation PBI_QueryOrder = ["Sales","RangeStart","RangeEnd"]
+
+annotation __TEdtr = 1
+
+ref table Sales
+
+ref cultureInfo en-SG
+

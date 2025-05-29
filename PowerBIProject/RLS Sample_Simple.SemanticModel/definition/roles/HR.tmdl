@@ -1,0 +1,7 @@
+role HR
+	modelPermission: read
+
+	tablePermission Users = [UserPrincipalName] == "user1@domain.com"
+
+	annotation PBI_Id = cdefb70031244ec2aff140b07a465b6b
+

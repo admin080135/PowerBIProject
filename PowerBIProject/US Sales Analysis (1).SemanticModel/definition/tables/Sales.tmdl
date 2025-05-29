@@ -1,0 +1,121 @@
+table Sales
+	lineageTag: 8b3f2408-2bbd-4319-9035-f515f52671eb
+
+	measure Profit = SUM(Sales[Sales]) - SUM(Sales[Cost])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: a436b509-37b7-416a-8847-5449c375e729
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Profitability = DIVIDE([Profit], SUM([Sales]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ee25d206-9e43-4e51-becb-993d373047be
+
+	measure TotalSales = CALCULATE(SUM(Sales[Sales]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: fe7ae59a-623a-4921-82dc-f65aeb3256c4
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ProductKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d20ca2dd-c451-4d69-a44e-d463ce39a5f6
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7a9694e0-32c7-49b7-a00f-8b351bfd6e14
+		summarizeBy: none
+		sourceColumn: OrderDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerKey
+		dataType: int64
+		isHidden
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ea3d1ae4-acc9-42cb-85b5-3cd8891137fd
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: #,0
+		sourceProviderType: smallint
+		lineageTag: e8f7df5c-ea3e-4733-bd81-3544aa3bc8df
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Price'
+		dataType: decimal
+		formatString: \$#,0;(\$#,0);\$#,0
+		sourceProviderType: money
+		lineageTag: d7661d6e-cd9c-450f-9b82-24b2c4724107
+		summarizeBy: average
+		sourceColumn: Unit Price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Cost
+		dataType: decimal
+		formatString: \$#,0;(\$#,0);\$#,0
+		sourceProviderType: money
+		lineageTag: be1b067c-74f2-476c-acba-8dcdab77751a
+		summarizeBy: sum
+		sourceColumn: Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Sales
+		dataType: decimal
+		formatString: \$#,0;(\$#,0);\$#,0
+		sourceProviderType: money
+		lineageTag: d3b42f68-16f8-4249-a3e8-749f763a6412
+		summarizeBy: sum
+		sourceColumn: Sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition Sales-e970846b-f797-4022-bdf4-5b518fe20961 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("rajukumawinx"),
+				    AdventureWorksDW2016RS = Source{[Name="AdventureWorksDW2016"]}[Data],
+				    dbo_FactResellerSales = AdventureWorksDW2016RS{[Schema="dbo",Item="FactResellerSales"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_FactResellerSales,{"ProductKey", "OrderDateKey", "ResellerKey", "OrderQuantity", "UnitPrice", "TotalProductCost", "SalesAmount"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"OrderQuantity", "Quantity"}, {"UnitPrice", "Unit Price"}, {"SalesAmount", "Sales"}, {"TotalProductCost", "Cost"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,52 @@
+table FactTable
+	lineageTag: a9ebae7e-6683-47d4-8152-85e7477d83d7
+
+	column FactID
+		formatString: 0
+		lineageTag: 4e890210-6c4e-4ceb-bf44-fa0d921d505b
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [FactID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserID
+		formatString: 0
+		lineageTag: 49fb8f5a-3d20-4188-904c-5638ff00428a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UserID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		formatString: 0
+		lineageTag: d97b4aaf-d32b-496d-8445-2fbddbded6a0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactTable = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE (
+				    "FactID", INTEGER,
+				    "UserID", INTEGER,
+				    "Value", INTEGER,
+				    {
+				        {1, 1, 100},
+				        {2, 2, 200},
+				        {3, 3, 300},
+				        {4, 4, 400},
+				        {5, 1, 150},
+				        {6, 2, 250}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = ee00dd96aff34b0fa7045312f850eed8
+
